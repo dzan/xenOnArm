@@ -74,6 +74,8 @@ static char *xc_dom_guest_type(struct xc_dom_image *dom,
         }
     case EM_X86_64:
         return "xen-3.0-x86_64";
+    case EM_ARM:
+        return "xen-3.0-armv7l";
     default:
         return "xen-3.0-unknown";
     }
