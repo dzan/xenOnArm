@@ -54,11 +54,7 @@ static inline yajl_handle libxl__yajl_alloc(const yajl_callbacks *callbacks,
 
 static inline yajl_gen libxl_yajl_gen_alloc(const yajl_alloc_funcs *allocFuncs)
 {
-    yajl_gen g;
-    g = yajl_gen_alloc(allocFuncs);
-    if (g)
-        yajl_gen_config(g, yajl_gen_beautify, 1);
-    return g;
+    return yajl_gen_alloc(allocFuncs);
 }
 
 #else /* !HAVE_YAJL_V2 */

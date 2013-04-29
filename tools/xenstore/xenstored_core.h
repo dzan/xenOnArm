@@ -60,8 +60,6 @@ struct connection
 
 	/* The file descriptor we came in on. */
 	int fd;
-	/* The index of pollfd in global pollfd array */
-	int pollfd_idx;
 
 	/* Who am I? 0 for socket connections. */
 	unsigned int id;
