@@ -31,6 +31,8 @@
 
 #define XEN_VER "xen-3.0"
 
+#define ARM_GUEST_RAM_BASE 0x80000000
+
 /* ------------------------------------------------------------------------ */
 
 static void log_callback(struct elf_binary *elf, void *caller_data,
@@ -296,6 +298,9 @@ static int xc_dom_parse_elf_kernel(struct xc_dom_image *dom)
     /* find kernel segment */
     dom->kernel_seg.vstart = dom->parms.virt_kstart;
     dom->kernel_seg.vend   = dom->parms.virt_kend;
+
+	/* this should only be done for arm */
+    dom->rambase_pfn = ARM_GUEST_RAM_BASE >> XC_PAGE_SHIFT;
 
     if ( dom->parms.bsd_symtab )
         xc_dom_load_elf_symtab(dom, elf, 0);
